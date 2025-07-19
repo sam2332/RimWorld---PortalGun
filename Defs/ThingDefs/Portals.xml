@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Entry Portal -->
+  <ThingDef>
+    <defName>PortalEntry</defName>
+    <label>portal (entry)</label>
+    <description>A green swirling portal that teleports pawns to its linked exit portal. This is the entry point.</description>
+    <thingClass>PortalGun.Portal</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/PortalEntry</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1, 1)</drawSize>
+      <color>(0, 255, 0)</color>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <blockWind>false</blockWind>
+    <fillPercent>0</fillPercent>
+    <canOverlapZones>true</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>1</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <selectable>true</selectable>
+    <rotatable>false</rotatable>
+    <destroyable>false</destroyable>
+    <building>
+      <isInert>true</isInert>
+      <canPlaceOverWall>true</canPlaceOverWall>
+    </building>
+    <designationCategory>Misc</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSpecial</li>
+    </thingCategories>
+  </ThingDef>
+
+  <!-- Exit Portal -->
+  <ThingDef>
+    <defName>PortalExit</defName>
+    <label>portal (exit)</label>
+    <description>A green swirling portal that pawns emerge from after entering the linked entry portal.</description>
+    <thingClass>PortalGun.Portal</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/PortalExit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1, 1)</drawSize>
+      <color>(0, 200, 0)</color>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <blockWind>false</blockWind>
+    <fillPercent>0</fillPercent>
+    <canOverlapZones>true</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>1</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <selectable>true</selectable>
+    <rotatable>false</rotatable>
+    <destroyable>false</destroyable>
+    <building>
+      <isInert>true</isInert>
+      <canPlaceOverWall>true</canPlaceOverWall>
+    </building>
+    <designationCategory>Misc</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsSpecial</li>
+    </thingCategories>
+  </ThingDef>
+</Defs>

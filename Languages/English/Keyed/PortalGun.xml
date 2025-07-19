@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- Portal Gun Settings -->
+  <PortalGun_SettingsTitle>Portal Gun Settings</PortalGun_SettingsTitle>
+  <PortalGun_MinPathCostLabel>Minimum path cost to trigger portal:</PortalGun_MinPathCostLabel>
+  <PortalGun_EnableVisualizationLabel>Enable portal visualization</PortalGun_EnableVisualizationLabel>
+  <PortalGun_EnableDebugLabel>Enable debug mode</PortalGun_EnableDebugLabel>
+  <PortalGun_PortalDurationLabel>Portal duration (seconds):</PortalGun_PortalDurationLabel>
+  <PortalGun_StunTicksLabel>Stun ticks after teleport:</PortalGun_StunTicksLabel>
+
+  <!-- Portal descriptions -->
+  <PortalGun_EntryPortalDesc>A green swirling portal that teleports pawns to its linked exit portal. This is the entry point.</PortalGun_EntryPortalDesc>
+  <PortalGun_ExitPortalDesc>A green swirling portal that pawns emerge from after entering the linked entry portal.</PortalGun_ExitPortalDesc>
+
+  <!-- Messages -->
+  <PortalGun_PortalCreated>Portal created: {0} → {1}</PortalGun_PortalCreated>
+  <PortalGun_PortalFailed>Failed to create portal</PortalGun_PortalFailed>
+  <PortalGun_NoPathFound>No path found!</PortalGun_NoPathFound>
+  <PortalGun_InvalidDestination>Invalid teleport destination</PortalGun_InvalidDestination>
+  <PortalGun_NoPawnSelected>No pawn selected</PortalGun_NoPawnSelected>
+  <PortalGun_PortalsCleared>Cleared {0} portals</PortalGun_PortalsCleared>
+
+  <!-- Jobs -->
+  <PortalGun_WalkingToPortal>walking to portal</PortalGun_WalkingToPortal>
+
+  <!-- Debug actions -->
+  <PortalGun_ForceCreatePortal>Force Create Portal</PortalGun_ForceCreatePortal>
+  <PortalGun_ShowPathCost>Show Path Cost</PortalGun_ShowPathCost>
+  <PortalGun_TeleportPawn>Teleport Pawn</PortalGun_TeleportPawn>
+  <PortalGun_ClearAllPortals>Clear All Portals</PortalGun_ClearAllPortals>
+
+</LanguageData>

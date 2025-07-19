@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build Portal Gun Mod",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"Source/PortalGun.csproj",
+				"--configuration",
+				"Release"
+			],
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": [
+				"$msCompile"
+			]
+		}
+	]
+}

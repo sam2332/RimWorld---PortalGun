@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Rick's Portal Gun - Smart Teleporter AI</name>
+  <author>Portal Gun Team</author>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <packageId>portalgun.smartteleporter</packageId>
+  <description>Enable intelligent portal-based teleportation for pawns when traversing inefficient or long paths, simulating Rick's portal gun. When a pawn begins a task, it evaluates travel cost. If the cost exceeds a threshold, a green portal pair spawns, and the pawn teleports through it to reach the target more efficiently.</description>
+  <loadAfter>
+    <li>Ludeon.RimWorld.Royalty</li>
+  </loadAfter>
+</ModMetaData>
