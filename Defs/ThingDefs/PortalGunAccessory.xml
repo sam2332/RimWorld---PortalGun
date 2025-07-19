@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>PortalGun_Device</defName>
+    <label>portal gun device</label>
+    <description>A sophisticated quantum tunneling device that creates temporary spatial rifts. When worn, it automatically detects when the wearer needs to travel long distances and creates portal pairs to drastically reduce travel time. The device is compact and worn on the belt, not interfering with other equipment.</description>
+    <techLevel>Spacer</techLevel>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <researchPrerequisite>PortalTechnology</researchPrerequisite>
+      <recipeUsers>
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Apparel/PortalGunDevice</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <Steel>75</Steel>
+      <Plasteel>25</Plasteel>
+      <Gold>15</Gold>
+      <ComponentSpacer>3</ComponentSpacer>
+      <Uranium>10</Uranium>
+      <PortalFluid>5</PortalFluid>
+    </costList>
+    <statBases>
+      <WorkToMake>12000</WorkToMake>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>1.2</Mass>
+      <Flammability>0.2</Flammability>
+      <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.15</ArmorRating_Heat>
+      <Insulation_Cold>2</Insulation_Cold>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>0.05</MoveSpeed>
+    </equippedStatOffsets>
+    <apparel>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Apparel/PortalGunDevice/PortalGunDevice</wornGraphicPath>
+      <layers>
+        <li>Belt</li>
+      </layers>
+      <tags>
+        <li>Belt</li>
+        <li>Spacer</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+        <li>Worker</li>
+      </defaultOutfitTags>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_StandardApparel" />
+    <thingCategories>
+      <li>ApparelBelts</li>
+    </thingCategories>
+  </ThingDef>
+
+</Defs>

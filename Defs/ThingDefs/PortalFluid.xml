@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>PortalFluid</defName>
+    <label>portal fluid</label>
+    <description>A highly exotic quantum-entangled fluid used in portal technology. This viscous, shimmering substance maintains quantum coherence at room temperature and is essential for stabilizing spatial rifts. Extremely difficult to synthesize and requires advanced fabrication equipment.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Item/Resource/PortalFluid</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>ChemFuel_Drop</soundInteract>
+    <soundDrop>ChemFuel_Drop</soundDrop>
+    <statBases>
+      <MaxHitPoints>70</MaxHitPoints>
+      <Mass>0.8</Mass>
+      <Flammability>0.1</Flammability>
+      <DeteriorationRate>1.0</DeteriorationRate>
+      <MarketValue>50</MarketValue>
+      <WorkToMake>8000</WorkToMake>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <stackLimit>25</stackLimit>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Cook</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+      <researchPrerequisite>PortalTechnology</researchPrerequisite>
+      <recipeUsers>
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <costList>
+      <Steel>20</Steel>
+      <Plasteel>15</Plasteel>
+      <Gold>5</Gold>
+      <ComponentSpacer>1</ComponentSpacer>
+      <Chemfuel>30</Chemfuel>
+    </costList>
+  </ThingDef>
+
+</Defs>

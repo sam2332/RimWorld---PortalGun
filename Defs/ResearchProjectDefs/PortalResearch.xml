@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ResearchProjectDef>
+    <defName>PortalTechnology</defName>
+    <label>portal technology</label>
+    <description>Unlock the secrets of quantum tunneling and spatial manipulation to create temporary dimensional rifts. This technology allows the construction of portable portal generation devices.</description>
+    <baseCost>3000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>TransportPod</li>
+      <li>Fabrication</li>
+    </prerequisites>
+    <tab>Main</tab>
+    <researchViewX>12.00</researchViewX>
+    <researchViewY>4.20</researchViewY>
+  </ResearchProjectDef>
+
+</Defs>

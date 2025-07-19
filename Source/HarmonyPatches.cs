@@ -11,7 +11,8 @@ namespace PortalGun
     {
         static bool Prefix(Pawn_PathFollower __instance, LocalTargetInfo dest, PathEndMode peMode)
         {
-            Pawn pawn = __instance.pawn;
+            // Use reflection to access the private pawn field
+            Pawn pawn = (Pawn)typeof(Pawn_PathFollower).GetField("pawn", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(__instance);
             
             // Only apply to colonists and player-controlled pawns
             if (pawn == null || !pawn.Spawned || 
@@ -21,6 +22,10 @@ namespace PortalGun
 
             // Don't interfere if pawn is already teleporting
             if (pawn.teleporting)
+                return true;
+
+            // Check if pawn has a portal gun device
+            if (!HasPortalGunDevice(pawn))
                 return true;
 
             // Calculate path cost
@@ -73,6 +78,35 @@ namespace PortalGun
             return false;
         }
 
+        private static bool HasPortalGunDevice(Pawn pawn)
+        {
+            // Check if pawn has portal gun device equipped
+            if (pawn.apparel?.WornApparel != null)
+            {
+                foreach (var apparel in pawn.apparel.WornApparel)
+                {
+                    if (apparel.def == PortalGunDefOf.PortalGun_Device)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            // Check if pawn has portal gun device in inventory
+            if (pawn.inventory?.innerContainer != null)
+            {
+                foreach (var item in pawn.inventory.innerContainer)
+                {
+                    if (item.def == PortalGunDefOf.PortalGun_Device)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         private static int CalculatePathCost(IntVec3 start, IntVec3 end, Map map, Pawn pawn)
         {
             // Use RimWorld's actual pathfinding system to get accurate cost
@@ -86,7 +120,7 @@ namespace PortalGun
                 
                 if (path != null && path.Found)
                 {
-                    int totalCost = path.TotalCost;
+                    int totalCost = (int)path.TotalCost;
                     path.ReleaseToPool(); // Important: release path back to pool
                     
                     if (PortalGunSettings.enableDebugMode)
@@ -99,7 +133,7 @@ namespace PortalGun
                 else
                 {
                     // Fallback to distance estimation if no path found
-                    int fallbackCost = (int)(start.DistanceTo(end) * 20); // Higher cost for unreachable areas
+                    int fallbackCost = (int)(start.DistanceTo(end) * 20f); // Higher cost for unreachable areas
                     
                     if (PortalGunSettings.enableDebugMode)
                     {
@@ -113,7 +147,8 @@ namespace PortalGun
             {
                 Log.Warning($"[Portal Gun] Error calculating path cost: {e.Message}");
                 // Fallback to simple distance calculation
-                return (int)(start.DistanceTo(end) * 15);
+                return (int)(start.DistanceTo(end) * 15f);
             }
+        }
     }
 }

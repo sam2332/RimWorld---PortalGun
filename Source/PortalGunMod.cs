@@ -7,9 +7,9 @@ using UnityEngine;
 namespace PortalGun
 {
     [StaticConstructorOnStartup]
-    public static class PortalGunMod
+    public static class PortalGunInitializer
     {
-        static PortalGunMod()
+        static PortalGunInitializer()
         {
             var harmony = new Harmony("portalgun.smartteleporter");
             harmony.PatchAll();

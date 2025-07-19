@@ -8,6 +8,7 @@ namespace PortalGun
     {
         public static ThingDef PortalEntry;
         public static ThingDef PortalExit;
+        public static ThingDef PortalGun_Device;
 
         static PortalGunDefOf()
         {

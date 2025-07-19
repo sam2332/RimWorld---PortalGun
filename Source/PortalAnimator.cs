@@ -10,7 +10,7 @@ namespace PortalGun
         private float pulseIntensity = 1.0f;
         private Color baseColor = Color.green;
         
-        public override void Tick()
+        protected override void Tick()
         {
             base.Tick();
             animationTick++;
@@ -29,14 +29,14 @@ namespace PortalGun
             }
         }
 
-        public override void Draw()
+        protected override void DrawAt(Vector3 drawLoc, bool flip = false)
         {
-            base.Draw();
+            base.DrawAt(drawLoc, flip);
             
             // Add a glowing effect by drawing multiple times with different alphas
             for (int i = 0; i < 3; i++)
             {
-                Vector3 drawPos = DrawPos + new Vector3(Rand.Range(-0.05f, 0.05f), 0, Rand.Range(-0.05f, 0.05f));
+                Vector3 drawPos = drawLoc + new Vector3(Rand.Range(-0.05f, 0.05f), 0, Rand.Range(-0.05f, 0.05f));
                 Graphics.DrawMesh(MeshPool.plane10, drawPos, Quaternion.identity, 
                     MaterialPool.MatFrom(def.graphicData.texPath, ShaderDatabase.Transparent, 
                     baseColor * (pulseIntensity * (0.3f + i * 0.2f))), 0);

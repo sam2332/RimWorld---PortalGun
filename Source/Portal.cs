@@ -2,10 +2,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 using UnityEngine;
-using System.Linq;g RimWorld;
-using Verse;
-using Verse.AI;
-using UnityEngine;
+using System.Linq;
 
 namespace PortalGun
 {
@@ -28,7 +25,7 @@ namespace PortalGun
             }
         }
 
-        public override void Tick()
+        protected override void Tick()
         {
             base.Tick();
 
@@ -51,7 +48,7 @@ namespace PortalGun
             if (linkedPortal?.Spawned != true) return;
 
             // Check all pawns on this cell and adjacent cells (in case of minor positioning differences)
-            foreach (IntVec3 cell in GenAdj.CellsAdjacent8Way(Position).Append(Position))
+            foreach (IntVec3 cell in GenAdj.CellsAdjacent8Way(Position, Rot4.North, new IntVec2(1, 1)).Append(Position))
             {
                 if (!cell.InBounds(Map)) continue;
 
@@ -85,9 +82,6 @@ namespace PortalGun
                 
                 // Entry effecter (like farskip)
                 EffecterDefOf.Skip_Entry.Spawn(pawn, Map).Cleanup();
-                
-                // Entry sound
-                SoundDefOf.Psycast_Skip_Entry.PlayOneShot(new TargetInfo(Position, Map));
             }
 
             // Find safe exit position near linked portal
@@ -116,9 +110,6 @@ namespace PortalGun
             {
                 // Exit effecter
                 EffecterDefOf.Skip_ExitNoDelay.Spawn(exitPosition, Map).Cleanup();
-                
-                // Exit sound
-                SoundDefOf.Psycast_Skip_Exit.PlayOneShot(new TargetInfo(exitPosition, Map));
             }
 
             // Set drafted state if colonist (like farskip)
@@ -200,7 +191,7 @@ namespace PortalGun
             Scribe_References.Look(ref owner, "owner");
             Scribe_Values.Look(ref spawnTick, "spawnTick");
             Scribe_Values.Look(ref isEntryPortal, "isEntryPortal");
-            Scribe_TargetInfo.Look(ref originalDestination, "originalDestination");
+            Scribe_Deep.Look(ref originalDestination, "originalDestination");
         }
 
         public override string GetInspectString()
