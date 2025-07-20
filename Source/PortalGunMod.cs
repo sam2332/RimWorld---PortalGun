@@ -19,11 +19,11 @@ namespace PortalGun
 
     public class PortalGunSettings : ModSettings
     {
-        public static int minimumPathCostThreshold = 300;
+        public static int minimumPathCostThreshold = 80;
         public static bool enablePortalVisualization = true;
-        public static bool enableDebugMode = false;
+        public static bool enableDebugMode = true;
         public static float portalDuration = 5f; // seconds
-        public static int stunTicksAfterTeleport = 60; // 1 second
+        public static int stunTicksAfterTeleport = 0; // Rick and Morty style - no stun!
 
         public override void ExposeData()
         {
@@ -31,7 +31,7 @@ namespace PortalGun
             Scribe_Values.Look(ref enablePortalVisualization, "enablePortalVisualization", true);
             Scribe_Values.Look(ref enableDebugMode, "enableDebugMode", false);
             Scribe_Values.Look(ref portalDuration, "portalDuration", 5f);
-            Scribe_Values.Look(ref stunTicksAfterTeleport, "stunTicksAfterTeleport", 60);
+            Scribe_Values.Look(ref stunTicksAfterTeleport, "stunTicksAfterTeleport", 0);
             base.ExposeData();
         }
     }

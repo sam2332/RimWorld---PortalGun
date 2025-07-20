@@ -14,19 +14,27 @@ namespace PortalGun
             // Use reflection to access the private pawn field
             Pawn pawn = (Pawn)typeof(Pawn_PathFollower).GetField("pawn", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(__instance);
             
+
+            
             // Only apply to colonists and player-controlled pawns
             if (pawn == null || !pawn.Spawned || 
                 (!pawn.IsColonist && !pawn.IsPlayerControlled) ||
                 pawn.Dead || pawn.Downed)
+            {
                 return true;
+            }
 
             // Don't interfere if pawn is already teleporting
             if (pawn.teleporting)
+            {
                 return true;
+            }
 
             // Check if pawn has a portal gun device
             if (!HasPortalGunDevice(pawn))
+            {
                 return true;
+            }
 
             // Calculate path cost
             int pathCost = CalculatePathCost(pawn.Position, dest.Cell, pawn.Map, pawn);
@@ -80,13 +88,26 @@ namespace PortalGun
 
         private static bool HasPortalGunDevice(Pawn pawn)
         {
+            if (PortalGunSettings.enableDebugMode)
+            {
+                Log.Message($"[Portal Gun] Checking if {pawn.LabelShort} has portal gun device...");
+            }
+            
             // Check if pawn has portal gun device equipped
             if (pawn.apparel?.WornApparel != null)
             {
                 foreach (var apparel in pawn.apparel.WornApparel)
                 {
+                    if (PortalGunSettings.enableDebugMode)
+                    {
+                        Log.Message($"[Portal Gun] Checking apparel: {apparel.def.defName}");
+                    }
                     if (apparel.def == PortalGunDefOf.PortalGun_Device)
                     {
+                        if (PortalGunSettings.enableDebugMode)
+                        {
+                            Log.Message($"[Portal Gun] Found portal gun device in apparel!");
+                        }
                         return true;
                     }
                 }
@@ -97,13 +118,25 @@ namespace PortalGun
             {
                 foreach (var item in pawn.inventory.innerContainer)
                 {
+                    if (PortalGunSettings.enableDebugMode)
+                    {
+                        Log.Message($"[Portal Gun] Checking inventory item: {item.def.defName}");
+                    }
                     if (item.def == PortalGunDefOf.PortalGun_Device)
                     {
+                        if (PortalGunSettings.enableDebugMode)
+                        {
+                            Log.Message($"[Portal Gun] Found portal gun device in inventory!");
+                        }
                         return true;
                     }
                 }
             }
 
+            if (PortalGunSettings.enableDebugMode)
+            {
+                Log.Message($"[Portal Gun] No portal gun device found for {pawn.LabelShort}");
+            }
             return false;
         }
 

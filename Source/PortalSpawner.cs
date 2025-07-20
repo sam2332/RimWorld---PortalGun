@@ -9,7 +9,11 @@ namespace PortalGun
     {
         public static bool TrySpawnPortalPair(Pawn pawn, IntVec3 entryPos, IntVec3 exitPos, LocalTargetInfo originalDestination)
         {
-            if (!IsValidPortalLocation(entryPos, pawn.Map) || !IsValidPortalLocation(exitPos, pawn.Map))
+            // For the entry position, allow the pawn's current location since they'll teleport away
+            bool entryValid = IsValidPortalLocation(entryPos, pawn.Map, pawn);
+            bool exitValid = IsValidPortalLocation(exitPos, pawn.Map);
+            
+            if (!entryValid || !exitValid)
             {
                 if (PortalGunSettings.enableDebugMode)
                 {
@@ -53,21 +57,67 @@ namespace PortalGun
             return true;
         }
 
-        public static bool IsValidPortalLocation(IntVec3 cell, Map map)
+        public static bool IsValidPortalLocation(IntVec3 cell, Map map, Pawn allowedPawn = null)
         {
-            if (!cell.InBounds(map) || !cell.Walkable(map))
+            if (PortalGunSettings.enableDebugMode)
+            {
+                Log.Message($"[Portal Gun] Checking portal location validity: {cell}");
+            }
+            
+            if (!cell.InBounds(map))
+            {
+                if (PortalGunSettings.enableDebugMode)
+                {
+                    Log.Message($"[Portal Gun] Location {cell} is out of bounds");
+                }
                 return false;
+            }
+            
+            if (!cell.Walkable(map))
+            {
+                if (PortalGunSettings.enableDebugMode)
+                {
+                    Log.Message($"[Portal Gun] Location {cell} is not walkable");
+                }
+                return false;
+            }
 
             // Check if cell is blocked by things
             List<Thing> things = cell.GetThingList(map);
             foreach (Thing thing in things)
             {
                 if (thing.def.category == ThingCategory.Building && thing.def.passability == Traversability.Impassable)
+                {
+                    if (PortalGunSettings.enableDebugMode)
+                    {
+                        Log.Message($"[Portal Gun] Location {cell} blocked by impassable building: {thing.def.defName}");
+                    }
                     return false;
-                if (thing is Pawn)
+                }
+                if (thing is Pawn pawnAtLocation)
+                {
+                    // Allow the specified pawn (portal gun owner) to occupy their entry location
+                    if (allowedPawn != null && pawnAtLocation == allowedPawn)
+                    {
+                        if (PortalGunSettings.enableDebugMode)
+                        {
+                            Log.Message($"[Portal Gun] Location {cell} occupied by allowed pawn: {pawnAtLocation.LabelShort}");
+                        }
+                        continue; // Skip this thing and continue checking
+                    }
+                    
+                    if (PortalGunSettings.enableDebugMode)
+                    {
+                        Log.Message($"[Portal Gun] Location {cell} blocked by pawn: {pawnAtLocation.LabelShort}");
+                    }
                     return false;
+                }
             }
 
+            if (PortalGunSettings.enableDebugMode)
+            {
+                Log.Message($"[Portal Gun] Location {cell} is valid");
+            }
             return true;
         }
 
