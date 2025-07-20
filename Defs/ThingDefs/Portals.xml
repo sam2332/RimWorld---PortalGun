@@ -32,9 +32,6 @@
       <canPlaceOverWall>true</canPlaceOverWall>
     </building>
     <designationCategory>Misc</designationCategory>
-    <thingCategories>
-      <li>BuildingsSpecial</li>
-    </thingCategories>
   </ThingDef>
 
   <!-- Exit Portal -->
@@ -69,8 +66,5 @@
       <canPlaceOverWall>true</canPlaceOverWall>
     </building>
     <designationCategory>Misc</designationCategory>
-    <thingCategories>
-      <li>BuildingsSpecial</li>
-    </thingCategories>
   </ThingDef>
 </Defs>
