@@ -65,7 +65,7 @@
     </apparel>
     <colorGenerator Class="ColorGenerator_StandardApparel" />
     <thingCategories>
-      <li>ApparelBelts</li>
+      <li>ApparelUtility</li>
     </thingCategories>
   </ThingDef>
 
