@@ -32,7 +32,6 @@
       <canPlaceOverWall>true</canPlaceOverWall>
     </building>
     <designationCategory>Misc</designationCategory>
-    <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
       <li>BuildingsSpecial</li>
     </thingCategories>
@@ -70,7 +69,6 @@
       <canPlaceOverWall>true</canPlaceOverWall>
     </building>
     <designationCategory>Misc</designationCategory>
-    <minifiedDef>MinifiedThing</minifiedDef>
     <thingCategories>
       <li>BuildingsSpecial</li>
     </thingCategories>
