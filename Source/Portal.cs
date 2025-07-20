@@ -112,17 +112,7 @@ namespace PortalGun
                 EffecterDefOf.Skip_ExitNoDelay.Spawn(exitPosition, Map).Cleanup();
             }
 
-            // Set drafted state if colonist (like farskip)
-            if (pawn.drafter != null && pawn.IsColonistPlayerControlled && !pawn.Downed)
-            {
-                pawn.drafter.Drafted = true;
-            }
 
-            // Stun the pawn (like farskip)
-            if (PortalGunSettings.stunTicksAfterTeleport > 0)
-            {
-                pawn.stances.stunner.StunFor(PortalGunSettings.stunTicksAfterTeleport, owner, false, false);
-            }
 
             // Notify teleported (like farskip)
             pawn.Notify_Teleported();

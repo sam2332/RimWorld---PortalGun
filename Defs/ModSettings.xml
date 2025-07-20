@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ModSettings>
+    <defName>PortalGunSettings</defName>
+    <settings>
+      <minimumPathCostThreshold>300</minimumPathCostThreshold>
+      <enablePortalVisualization>true</enablePortalVisualization>
+      <enableDebugMode>false</enableDebugMode>
+      <portalDuration>5.0</portalDuration>
+    </settings>
+  </ModSettings>
+</Defs>

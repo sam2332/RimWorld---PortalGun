@@ -23,7 +23,6 @@ namespace PortalGun
         public static bool enablePortalVisualization = true;
         public static bool enableDebugMode = true;
         public static float portalDuration = 5f; // seconds
-        public static int stunTicksAfterTeleport = 0; // Rick and Morty style - no stun!
 
         public override void ExposeData()
         {
@@ -31,7 +30,6 @@ namespace PortalGun
             Scribe_Values.Look(ref enablePortalVisualization, "enablePortalVisualization", true);
             Scribe_Values.Look(ref enableDebugMode, "enableDebugMode", false);
             Scribe_Values.Look(ref portalDuration, "portalDuration", 5f);
-            Scribe_Values.Look(ref stunTicksAfterTeleport, "stunTicksAfterTeleport", 0);
             base.ExposeData();
         }
     }
@@ -58,9 +56,6 @@ namespace PortalGun
 
             listingStandard.Label("Portal duration (seconds): " + PortalGunSettings.portalDuration.ToString("F1"));
             PortalGunSettings.portalDuration = listingStandard.Slider(PortalGunSettings.portalDuration, 1f, 30f);
-
-            listingStandard.Label("Stun ticks after teleport: " + PortalGunSettings.stunTicksAfterTeleport);
-            PortalGunSettings.stunTicksAfterTeleport = (int)listingStandard.Slider(PortalGunSettings.stunTicksAfterTeleport, 0, 300);
 
             listingStandard.End();
             base.DoSettingsWindowContents(inRect);
